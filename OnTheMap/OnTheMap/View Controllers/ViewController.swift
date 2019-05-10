@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             let range = Range(5..<data!.count)
             let newData = data?.subdata(in: range) /* subset response data! */
-            print(String(data: newData!, encoding: .utf8)!)
+            //print(String(data: newData!, encoding: .utf8)!)
             do {
                 let decoder = JSONDecoder()
                 let loginInfo = try decoder.decode(Login.self, from: newData!)

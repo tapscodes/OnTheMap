@@ -9,5 +9,9 @@
 import Foundation
 //stores student locations
 struct StudentStorage{
-    //var studentStorage = [StudentLocation]
+    //static var shared = StudentLocation()
+    
+    private init() {}
+    
+    var studentInformation = [StudentLocation]
 }

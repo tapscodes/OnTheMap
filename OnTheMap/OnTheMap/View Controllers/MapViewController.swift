@@ -7,15 +7,20 @@
 //
 import UIKit
 import Foundation
-class MapViewController: UIViewController {
+import CoreLocation
+import MapKit
+class MapViewController: UIViewController, MKMapViewDelegate {
+    @IBOutlet weak var mapView: MKMapView!
+    
         override func viewDidLoad() {
         super.viewDidLoad()
         //getMapData()
-        //getStudentLocation()
+        getStudentLocation()
         //POST+PUT TESTER: WORKED
         //postStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851)
         //putStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851, objID: "8ZExGR5uX8")
     }
+    //INFO FUNCTIONS
     //gets fake student data from Udacity API
     func getMapData(){
         let request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/users/3903878747")!)
@@ -40,7 +45,14 @@ class MapViewController: UIViewController {
             if error != nil { // Handle error...
                 return
             }
-            print(String(data: data!, encoding: .utf8)!)
+            //print(String(data: data!, encoding: .utf8)!)
+            do {
+                let decoder = JSONDecoder()
+                let studentLoc = try decoder.decode(StudentLocation.self, from: data!)
+                print(studentLoc)
+            } catch {
+                print(error)
+            }
         }
         task.resume()
     }
@@ -95,5 +107,6 @@ class MapViewController: UIViewController {
         }
         task.resume()
     }
-
+    //MAP FUNCTIONS
+    
 }

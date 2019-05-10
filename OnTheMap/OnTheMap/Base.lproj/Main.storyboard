@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -149,17 +149,27 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5sm-Qw-NNK">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="C4A-v1-GB1">
+                                <rect key="frame" x="177" y="331" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="i86-4W-P5K" firstAttribute="bottom" secondItem="5sm-Qw-NNK" secondAttribute="bottom" id="CIf-OS-PRc"/>
+                            <constraint firstItem="C4A-v1-GB1" firstAttribute="top" secondItem="i86-4W-P5K" secondAttribute="top" constant="267" id="NHe-2k-2Xo"/>
                             <constraint firstItem="i86-4W-P5K" firstAttribute="trailing" secondItem="5sm-Qw-NNK" secondAttribute="trailing" id="QBP-xz-son"/>
                             <constraint firstItem="5sm-Qw-NNK" firstAttribute="leading" secondItem="i86-4W-P5K" secondAttribute="leading" id="Y25-TK-H0S"/>
+                            <constraint firstItem="C4A-v1-GB1" firstAttribute="leading" secondItem="i86-4W-P5K" secondAttribute="leading" constant="177" id="cQn-T0-kTM"/>
+                            <constraint firstItem="i86-4W-P5K" firstAttribute="trailing" secondItem="C4A-v1-GB1" secondAttribute="trailing" constant="178" id="grk-re-DRL"/>
+                            <constraint firstItem="i86-4W-P5K" firstAttribute="bottom" secondItem="C4A-v1-GB1" secondAttribute="bottom" constant="267" id="l4I-pf-g6U"/>
                             <constraint firstItem="5sm-Qw-NNK" firstAttribute="top" secondItem="i86-4W-P5K" secondAttribute="top" id="ygQ-ls-725"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="i86-4W-P5K"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="9C4-5y-QAq"/>
+                    <connections>
+                        <outlet property="mapView" destination="5sm-Qw-NNK" id="fb8-4o-lou"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmp-mG-my5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
