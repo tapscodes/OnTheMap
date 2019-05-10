@@ -20,6 +20,7 @@ class NavViewController: UIViewController{
     }
     //refresh button pressed
     @IBAction func refreshPressed(_ sender: Any) {
+        print("WORKED")
     }
     //add location pressed
     @IBAction func newLocPressed(_ sender: Any) {
