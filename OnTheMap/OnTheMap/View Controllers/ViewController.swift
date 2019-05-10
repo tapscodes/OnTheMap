@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if error != nil { // Handle error…
                 return
             }
-            let range = Range(5..<data!.count)
+            let range = (5..<data!.count)
             let newData = data?.subdata(in: range) /* subset response data! */
             //print(String(data: newData!, encoding: .utf8)!)
             do {

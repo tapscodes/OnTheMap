@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		021CD71C2285F85A00D71EFD /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021CD71B2285F85A00D71EFD /* TabViewController.swift */; };
 		023F7B3F227BD4DA00C11B0C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023F7B3E227BD4DA00C11B0C /* MapViewController.swift */; };
 		02AF52282283A3A4005C8127 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF52272283A3A4005C8127 /* Json.swift */; };
 		02E33673227A700E00647038 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E33672227A700E00647038 /* AppDelegate.swift */; };
@@ -15,11 +16,11 @@
 		02E3367D227A700F00647038 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E3367B227A700F00647038 /* LaunchScreen.storyboard */; };
 		02E33684227A753100647038 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E33679227A700F00647038 /* Assets.xcassets */; };
 		02EF8013227BD2EE00A377EE /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF8012227BD2EE00A377EE /* ListViewController.swift */; };
-		02FCD59F2285D202009EA71F /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCD59E2285D202009EA71F /* NavViewController.swift */; };
 		02FCD5A12285D21C009EA71F /* NewLocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCD5A02285D21C009EA71F /* NewLocViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		021CD71B2285F85A00D71EFD /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		023F7B3E227BD4DA00C11B0C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		02AF52272283A3A4005C8127 /* Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
 		02E3366F227A700D00647038 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,7 +31,6 @@
 		02E3367C227A700F00647038 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02E3367E227A700F00647038 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02EF8012227BD2EE00A377EE /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		02FCD59E2285D202009EA71F /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		02FCD5A02285D21C009EA71F /* NewLocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLocViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 				02E33674227A700E00647038 /* ViewController.swift */,
 				02EF8012227BD2EE00A377EE /* ListViewController.swift */,
 				023F7B3E227BD4DA00C11B0C /* MapViewController.swift */,
-				02FCD59E2285D202009EA71F /* NavViewController.swift */,
+				021CD71B2285F85A00D71EFD /* TabViewController.swift */,
 				02FCD5A02285D21C009EA71F /* NewLocViewController.swift */,
 			);
 			path = "View Controllers";
@@ -171,7 +171,7 @@
 				02E33675227A700E00647038 /* ViewController.swift in Sources */,
 				02E33673227A700E00647038 /* AppDelegate.swift in Sources */,
 				02EF8013227BD2EE00A377EE /* ListViewController.swift in Sources */,
-				02FCD59F2285D202009EA71F /* NavViewController.swift in Sources */,
+				021CD71C2285F85A00D71EFD /* TabViewController.swift in Sources */,
 				023F7B3F227BD4DA00C11B0C /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

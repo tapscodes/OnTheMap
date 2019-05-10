@@ -166,7 +166,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="i86-4W-P5K"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="9C4-5y-QAq"/>
+                    <tabBarItem key="tabBarItem" id="9C4-5y-QAq"/>
                     <connections>
                         <outlet property="mapView" destination="5sm-Qw-NNK" id="fb8-4o-lou"/>
                     </connections>
@@ -180,20 +180,20 @@
             <objects>
                 <tabBarController storyboardIdentifier="tabVC" title="Tab" id="Waz-tQ-1Fq" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="gaa-WP-8nI">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="Ogq-5B-5Zi">
+                        <barButtonItem key="leftBarButtonItem" title="LOG OUT" id="7Ry-Qh-hqh">
                             <connections>
-                                <action selector="lougoutPressed:" destination="qUQ-mg-qmP" id="7fX-1o-I0B"/>
+                                <action selector="logOut:" destination="RdB-i1-T9i" id="KXn-Zk-n6J"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="luq-Nc-9Ow">
+                            <barButtonItem systemItem="add" id="ttg-2u-Z9P">
                                 <connections>
-                                    <action selector="newLocPressed:" destination="qUQ-mg-qmP" id="nYj-TS-g1o"/>
+                                    <action selector="newLoc:" destination="RdB-i1-T9i" id="KIo-VR-Vks"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="PjC-aB-mK3">
+                            <barButtonItem systemItem="refresh" id="Teg-6d-bGW">
                                 <connections>
-                                    <action selector="refreshPressed:" destination="qUQ-mg-qmP" id="pcg-3w-T5c"/>
+                                    <action selector="refresh:" destination="RdB-i1-T9i" id="Foy-8e-LMJ"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -209,7 +209,7 @@
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JMk-tW-G2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="qUQ-mg-qmP" userLabel="Exit" sceneMemberID="exit"/>
+                <exit id="RdB-i1-T9i" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1716" y="27"/>
         </scene>
@@ -304,11 +304,9 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="bHd-pa-wya" firstAttribute="top" secondItem="946-P9-FZw" secondAttribute="bottom" id="0Yi-4F-RfS"/>
                                     <constraint firstItem="9AF-op-A61" firstAttribute="leading" secondItem="dVc-yt-YvP" secondAttribute="leading" id="7eO-hk-LPE"/>
                                     <constraint firstAttribute="trailing" secondItem="Wnn-rE-HYj" secondAttribute="trailing" id="9Y9-TZ-2Qo"/>
                                     <constraint firstItem="vAR-wl-KW7" firstAttribute="top" secondItem="T2W-d2-osq" secondAttribute="bottom" id="9f2-YG-S3N"/>
-                                    <constraint firstItem="946-P9-FZw" firstAttribute="top" secondItem="9AF-op-A61" secondAttribute="bottom" id="FBe-W2-lpL"/>
                                     <constraint firstAttribute="trailing" secondItem="bHd-pa-wya" secondAttribute="trailing" id="HnG-Uq-Xei"/>
                                     <constraint firstItem="T2W-d2-osq" firstAttribute="leading" secondItem="dVc-yt-YvP" secondAttribute="leading" id="I08-aa-1pw"/>
                                     <constraint firstItem="9AF-op-A61" firstAttribute="top" secondItem="Wnn-rE-HYj" secondAttribute="bottom" id="IJL-7g-fKz"/>
@@ -320,11 +318,8 @@
                                     <constraint firstAttribute="trailing" secondItem="9AF-op-A61" secondAttribute="trailing" id="a8T-VL-wUR"/>
                                     <constraint firstItem="T2W-d2-osq" firstAttribute="top" secondItem="dVc-yt-YvP" secondAttribute="top" id="daA-HK-V7l"/>
                                     <constraint firstItem="bHd-pa-wya" firstAttribute="leading" secondItem="dVc-yt-YvP" secondAttribute="leading" id="fog-Wr-ZBa"/>
-                                    <constraint firstItem="9AF-op-A61" firstAttribute="top" secondItem="Wnn-rE-HYj" secondAttribute="bottom" id="gC4-5m-ULW"/>
-                                    <constraint firstItem="vAR-wl-KW7" firstAttribute="top" secondItem="T2W-d2-osq" secondAttribute="bottom" id="iHD-bg-fOj"/>
                                     <constraint firstAttribute="trailing" secondItem="vAR-wl-KW7" secondAttribute="trailing" id="pvG-iI-5Pg"/>
                                     <constraint firstItem="946-P9-FZw" firstAttribute="top" secondItem="9AF-op-A61" secondAttribute="bottom" id="uP9-cH-FMr"/>
-                                    <constraint firstItem="Wnn-rE-HYj" firstAttribute="top" secondItem="vAR-wl-KW7" secondAttribute="bottom" id="vXj-BX-j01"/>
                                     <constraint firstAttribute="bottom" secondItem="bHd-pa-wya" secondAttribute="bottom" id="vif-YO-gg0"/>
                                     <constraint firstItem="946-P9-FZw" firstAttribute="leading" secondItem="dVc-yt-YvP" secondAttribute="leading" id="y9S-A7-HtJ"/>
                                     <constraint firstItem="vAR-wl-KW7" firstAttribute="leading" secondItem="dVc-yt-YvP" secondAttribute="leading" id="yu5-hJ-Azg"/>

@@ -12,7 +12,4 @@ class NewLocViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    //prssed find location button
-    @IBAction func findLocationPressed(_ sender: Any) {
-    }
 }
