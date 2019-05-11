@@ -16,12 +16,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginCheck: UILabel!
     //login variable to check if user has logged in
     var login = false
+    var signupPage: String = "https://auth.udacity.com/sign-up?next=https://classroom.udacity.com/authenticated"
     override func viewDidLoad() {
         super.viewDidLoad()
         //sets up text fields
         userField.delegate = self
         passField.delegate = self
     }
+    //changes text under login
     func changeText(text: String){
         loginCheck.text = text
     }
@@ -68,6 +70,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         else{
         self.changeText(text: "Login Failed. Try Again.")
         }
+    }
+    //what happens when signup is pressed
+    @IBAction func signUpPressed(_ sender: Any) {
+        let app = UIApplication.shared
+        //opens udacity signup page
+        app.open(URL(string: signupPage)!, options: [:], completionHandler: nil)
     }
 }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		021CD71C2285F85A00D71EFD /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021CD71B2285F85A00D71EFD /* TabViewController.swift */; };
 		023F7B3F227BD4DA00C11B0C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023F7B3E227BD4DA00C11B0C /* MapViewController.swift */; };
+		0281FB5E2286300600FC20AB /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281FB5D2286300600FC20AB /* ListCell.swift */; };
 		02AF52282283A3A4005C8127 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF52272283A3A4005C8127 /* Json.swift */; };
 		02E33673227A700E00647038 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E33672227A700E00647038 /* AppDelegate.swift */; };
 		02E33675227A700E00647038 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E33674227A700E00647038 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		021CD71B2285F85A00D71EFD /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		023F7B3E227BD4DA00C11B0C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0281FB5D2286300600FC20AB /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		02AF52272283A3A4005C8127 /* Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
 		02E3366F227A700D00647038 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E33672227A700E00647038 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				02AF52272283A3A4005C8127 /* Json.swift */,
+				0281FB5D2286300600FC20AB /* ListCell.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				02E33675227A700E00647038 /* ViewController.swift in Sources */,
 				02E33673227A700E00647038 /* AppDelegate.swift in Sources */,
 				02EF8013227BD2EE00A377EE /* ListViewController.swift in Sources */,
+				0281FB5E2286300600FC20AB /* ListCell.swift in Sources */,
 				021CD71C2285F85A00D71EFD /* TabViewController.swift in Sources */,
 				023F7B3F227BD4DA00C11B0C /* MapViewController.swift in Sources */,
 			);

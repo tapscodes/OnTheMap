@@ -11,15 +11,55 @@ import CoreLocation
 import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
-    
         override func viewDidLoad() {
-        super.viewDidLoad()
-        //getMapData()
-        getStudentLocation()
-        //POST+PUT TESTER: WORKED
-        //postStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851)
-        //putStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851, objID: "8ZExGR5uX8")
+            super.viewDidLoad()
+            //getMapData()
+            getStudentLocation()
+            //POST+PUT TESTER: WORKED
+            //postStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851)
+            //putStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851, objID: "8ZExGR5uX8")
+            
+            // The "locations" array is an array of dictionary objects that are similar to the JSON
+            // data that you can download from parse.
+            let locations = studentLocDict
+            
+            // We will create an MKPointAnnotation for each dictionary in "locations". The
+            // point annotations will be stored in this array, and then provided to the map view.
+            var annotations = [MKPointAnnotation]()
+            
+            // The "locations" array is loaded with the sample data below. We are using the dictionaries
+            // to create map annotations. This would be more stylish if the dictionaries were being
+            // used to create custom structs. Perhaps StudentLocation structs.
+            
+            for dictionary in locations {
+                
+                // Notice that the float values are being used to create CLLocationDegree values.
+                // This is a version of the Double type.
+                let lat = CLLocationDegrees(dictionary["latitude"] as! Float)
+                let long = CLLocationDegrees(dictionary["longitude"] as! Float)
+                
+                // The lat and long are used to create a CLLocationCoordinates2D instance.
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                
+                let first = dictionary["firstName"] as! String
+                let last = dictionary["lastName"] as! String
+                let mediaURL = dictionary["mediaURL"] as! String
+                
+                // Here we create the annotation and set its coordiate, title, and subtitle properties
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = "\(first) \(last)"
+                annotation.subtitle = mediaURL
+                
+                // Finally we place the annotation in an array of annotations.
+                annotations.append(annotation)
+            }
+            
+            // When the array is complete, we add the annotations to the map.
+            self.mapView.addAnnotations(annotations)
+            
     }
+}
     //INFO FUNCTIONS
     //gets fake student data from Udacity API
     func getMapData(){
@@ -48,8 +88,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             //print(String(data: data!, encoding: .utf8)!)
             do {
                 let decoder = JSONDecoder()
-                let studentLoc = try decoder.decode(StudentLocation.self, from: data!)
-                print(studentLoc)
+                let studentLocDict = try decoder.decode(StudentLocation.self, from: data!)
+                print(studentLocDict)
             } catch {
                 print(error)
             }
@@ -108,4 +148,39 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         task.resume()
     }
     //MAP FUNCTIONS
-}
+    
+    // MARK: - MKMapViewDelegate
+    
+    // Here we create a view with a "right callout accessory view". You might choose to look into other
+    // decoration alternatives. Notice the similarity between this method and the cellForRowAtIndexPath
+    // method in TableViewDataSource.
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = .red
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
+    }
+    
+    
+    // This delegate method is implemented to respond to taps. It opens the system browser
+    // to the URL specified in the annotationViews subtitle property.
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            let app = UIApplication.shared
+            if let toOpen = view.annotation?.subtitle! {
+                app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+            }
+        }
+    }
