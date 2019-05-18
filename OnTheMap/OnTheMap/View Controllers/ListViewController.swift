@@ -10,10 +10,11 @@ import Foundation
 class ListViewController: UITableViewController {
     var locs = studentLoc.getStudentResp()!.results
     override func viewDidLoad() {
-        viewDidLoad()
+        super.viewDidLoad()
         print("CALLED")
         studentLoc.getStudentLocation()
         tableView.delegate = self
+        tableView.dataSource = self
     }
      func didSelectLocation(info: StudentLocation) {
         let app = UIApplication.shared
