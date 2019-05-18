@@ -11,144 +11,50 @@ import CoreLocation
 import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
-        override func viewDidLoad() {
+    override func viewDidLoad() {
             super.viewDidLoad()
-            //getMapData()
-            getStudentLocation()
-            //POST+PUT TESTER: WORKED
             //postStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851)
             //putStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851, objID: "8ZExGR5uX8")
-            
-            /*
             // The "locations" array is an array of dictionary objects that are similar to the JSON
             // data that you can download from parse.
-            let locations = studentLocDict
+             studentLoc.getStudentLocation()
+        let locations = studentLoc.getStudentResp()?.results
             
             // We will create an MKPointAnnotation for each dictionary in "locations". The
             // point annotations will be stored in this array, and then provided to the map view.
-            var annotations = [MKPointAnnotation]()
+        var annotations = [MKPointAnnotation]()
             
             // The "locations" array is loaded with the sample data below. We are using the dictionaries
             // to create map annotations. This would be more stylish if the dictionaries were being
             // used to create custom structs. Perhaps StudentLocation structs.
-            
-            for dictionary in locations {
-                
+        for dictionary in locations! {
                 // Notice that the float values are being used to create CLLocationDegree values.
                 // This is a version of the Double type.
-                let lat = CLLocationDegrees(dictionary["latitude"] as! Float)
-                let long = CLLocationDegrees(dictionary["longitude"] as! Float)
+            if (dictionary.latitude != nil && dictionary.longitude != nil) {
+                let lat = CLLocationDegrees(dictionary.latitude as! Float)
+                let long = CLLocationDegrees(dictionary.longitude as! Float)
                 
                 // The lat and long are used to create a CLLocationCoordinates2D instance.
                 let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                
-                let first = dictionary["firstName"] as! String
-                let last = dictionary["lastName"] as! String
-                let mediaURL = dictionary["mediaURL"] as! String
+                let fullName = dictionary.fullName
+                let mediaURL = dictionary.realURL
                 
                 // Here we create the annotation and set its coordiate, title, and subtitle properties
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = coordinate
-                annotation.title = "\(first) \(last)"
+                annotation.title = fullName
                 annotation.subtitle = mediaURL
                 
                 // Finally we place the annotation in an array of annotations.
                 annotations.append(annotation)
             }
+            }
             
             // When the array is complete, we add the annotations to the map.
             self.mapView.addAnnotations(annotations)
-     */
-            
     }
 }
-    //INFO FUNCTIONS
-    //gets fake student data from Udacity API
-    func getMapData(){
-        let request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/users/3903878747")!)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error...
-                return
-            }
-            let range = (5..<data!.count)
-            let newData = data?.subdata(in: range) /* subset response data! */
-            print(String(data: newData!, encoding: .utf8)!)
-        }
-        task.resume()
-    }
-    //gets student location info from parse
-    func getStudentLocation(){
-        var request = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error...
-                return
-            }
-            //print(String(data: data!, encoding: .utf8)!)
-            do {
-                let decoder = JSONDecoder()
-                let studentLocDict = try decoder.decode(StudentLocation.self, from: data!)
-                print(studentLocDict)
-            } catch {
-                print(error)
-            }
-        }
-        task.resume()
-    }
-    //gets student info for one student
-    func getSpecificStudent(){
-        let urlString = "https://parse.udacity.com/parse/classes/StudentLocation"
-        let url = URL(string: urlString)
-        var request = URLRequest(url: url!)
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error
-                return
-            }
-            print(String(data: data!, encoding: .utf8)!)
-        }
-        task.resume()
-    }
-    //posts student location info
-    func postStudentLocation(key: String, firstname: String, lastname: String, mapString: String, mediaURL: String, latitude: Float, longitude: Float){
-        var request = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
-        request.httpMethod = "POST"
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"uniqueKey\": \"\(key)\", \"firstName\": \"\(firstname)\", \"lastName\": \"\(lastname)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(latitude), \"longitude\": \(longitude)}".data(using: .utf8)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error…
-                return
-            }
-            print(String(data: data!, encoding: .utf8)!)
-        }
-        task.resume()
-    }
-    func putStudentLocation(key: String, firstname: String, lastname: String, mapString: String, mediaURL: String, latitude: Float, longitude: Float, objID: String){
-        let urlString = "https://parse.udacity.com/parse/classes/StudentLocation/\(objID)"
-        let url = URL(string: urlString)
-        var request = URLRequest(url: url!)
-        request.httpMethod = "PUT"
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"uniqueKey\": \"\(key)\", \"firstName\": \"\(firstname)\", \"lastName\": \"\(lastname)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(latitude), \"longitude\": \(longitude)}".data(using: .utf8)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error…
-                return
-            }
-            print(String(data: data!, encoding: .utf8)!)
-        }
-        task.resume()
-    }
+    
     //MAP FUNCTIONS
     
     // MARK: - MKMapViewDelegate

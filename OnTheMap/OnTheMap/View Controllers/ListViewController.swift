@@ -8,15 +8,23 @@
 import UIKit
 import Foundation
 class ListViewController: UITableViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    //tableView.dataSource = //INSERT DATA SOURCE HERE
-    //tableView.delegate = self
+    var locs = studentLoc.getStudentResp()!.results
+    override func viewWillAppear(_ animated: Bool) {
+        studentLoc.getStudentLocation()
+        tableView.delegate = self
     }
-    //OPENS URL OF PERSON WHEN THEY ARE CLICKED ON
-    /* func didSelectLocation(info: /*Insert Student Info Here*/) {
+     func didSelectLocation(info: StudentLocation) {
         let app = UIApplication.shared
-        app.open(URL(string: info.mediaURL)!, options: [:], completionHandler: nil)
+        app.open(URL(string: info.realURL)!, options: [:], completionHandler: nil)
     }
-    */
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return 100
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LocCell", for: indexPath) as! ListCell
+        let info = self.locs[(indexPath as NSIndexPath).row]
+        cell.nameLabel.text = info.fullName
+        cell.websiteLabel.text = info.realURL
+        return cell
+    }
 }

@@ -21,44 +21,42 @@ struct Account: Codable{
     let key: String
 }
 //Student Location Info
+struct StudentResponse: Codable{
+    var results: [StudentLocation]
+}
 struct StudentLocation: Codable{
-    let locationID: String?
-    let uniqueKey: String
-    let firstName: String
-    let lastName: String
-    let mapString: String
-    let mediaURL: String
-    let latitude: Float
-    let longitude: Float
-    init(_ dictionary: [String: AnyObject]) {
-        self.locationID = dictionary["objectId"] as? String
-        self.uniqueKey = dictionary["uniqueKey"] as? String ?? ""
-        self.firstName = dictionary["firstName"] as? String ?? ""
-        self.lastName = dictionary["lastName"] as? String ?? ""
-        self.mapString = dictionary["mapString"] as? String ?? ""
-        self.mediaURL = dictionary["mediaURL"] as? String ?? ""
-        self.latitude = dictionary["latitude"] as? Float ?? 0.0
-        self.longitude = dictionary["longitude"] as? Float ?? 0.0
-    }
-        var fullName: String {
-            var name = ""
-            if !firstName.isEmpty {
-                name = firstName
+    var locationID: String?
+    var uniqueKey: String?
+    var firstName: String?
+    var lastName: String?
+    var mapString: String?
+    var mediaURL: String?
+    var latitude: Float?
+    var longitude: Float?
+    var fullName: String{
+        var name = "No name given"
+        if(firstName != nil){
+        name = firstName!
+            if(lastName != nil){
+            name += " "
+            name += lastName!
             }
-            if !lastName.isEmpty {
-                if name.isEmpty {
-                    name = lastName
-                } else {
-                    name += " \(lastName)"
-                }
+        }else{
+            if(lastName != nil){
+                name = lastName!
             }
-            if name.isEmpty {
-                name = "No name provided"
-            }
-            return name
         }
+        return name
     }
-    //Student Info
-    struct StudentInformation {
-        
+    var realURL: String{
+        var URL = "nowesbite.com"
+        if(mediaURL != nil ){
+            URL = mediaURL!
+        }
+        return URL
     }
+}
+//Student Info
+struct StudentInformation {
+    
+}
