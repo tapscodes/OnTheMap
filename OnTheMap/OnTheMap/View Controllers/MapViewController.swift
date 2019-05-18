@@ -19,6 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             //postStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851)
             //putStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851, objID: "8ZExGR5uX8")
             
+            /*
             // The "locations" array is an array of dictionary objects that are similar to the JSON
             // data that you can download from parse.
             let locations = studentLocDict
@@ -57,6 +58,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             // When the array is complete, we add the annotations to the map.
             self.mapView.addAnnotations(annotations)
+     */
             
     }
 }

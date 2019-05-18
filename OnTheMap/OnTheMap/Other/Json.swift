@@ -57,4 +57,8 @@ struct StudentLocation: Codable{
             }
             return name
         }
-}
+    }
+    //Student Info
+    struct StudentInformation {
+        
+    }

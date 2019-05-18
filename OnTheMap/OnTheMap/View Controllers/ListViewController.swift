@@ -10,12 +10,13 @@ import Foundation
 class ListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-    tableView.dataSource = //INSERT DATA SOURCE HERE
-    tableView.delegate = self
+    //tableView.dataSource = //INSERT DATA SOURCE HERE
+    //tableView.delegate = self
     }
     //OPENS URL OF PERSON WHEN THEY ARE CLICKED ON
-    func didSelectLocation(info: /*Insert Student Info Here*/) {
+    /* func didSelectLocation(info: /*Insert Student Info Here*/) {
         let app = UIApplication.shared
         app.open(URL(string: info.mediaURL)!, options: [:], completionHandler: nil)
     }
+    */
 }

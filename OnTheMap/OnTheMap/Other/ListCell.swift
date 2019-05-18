@@ -14,8 +14,10 @@ class ListCell: UITableViewCell {
     @IBOutlet weak var pinImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var websiteLabel: UILabel!
+    /*
     func configWith(_ info: (/*Insert Student Info Here*/)) {
         nameLabel.text = info.labelName
         websiteLabel.text = info.mediaURL
     }
+   */
 }
