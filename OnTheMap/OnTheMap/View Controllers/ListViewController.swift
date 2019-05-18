@@ -9,7 +9,9 @@ import UIKit
 import Foundation
 class ListViewController: UITableViewController {
     var locs = studentLoc.getStudentResp()!.results
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        viewDidLoad()
+        print("CALLED")
         studentLoc.getStudentLocation()
         tableView.delegate = self
     }
