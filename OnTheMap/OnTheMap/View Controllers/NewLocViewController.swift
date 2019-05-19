@@ -13,8 +13,9 @@ class NewLocViewController: UIViewController{
     @IBOutlet weak var locationField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //test cases
         postStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851)
-        putStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851, objID: "8ZExGR5uX8")
+        //putStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851, objID: "8ZExGR5uX8")
     }
     //what to do when user hits find location
     @IBAction func findLocation(_ sender: Any) {
@@ -37,6 +38,7 @@ class NewLocViewController: UIViewController{
         }
         task.resume()
     }
+    //puts student location info
     func putStudentLocation(key: String, firstname: String, lastname: String, mapString: String, mediaURL: String, latitude: Float, longitude: Float, objID: String){
         let urlString = "https://parse.udacity.com/parse/classes/StudentLocation/\(objID)"
         let url = URL(string: urlString)

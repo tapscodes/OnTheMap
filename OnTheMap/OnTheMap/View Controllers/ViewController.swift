@@ -9,13 +9,14 @@
 import UIKit
 //LOGIN VIEW CONTROLLER
 class ViewController: UIViewController, UITextFieldDelegate {
-    
     @IBOutlet weak var userField: UITextField!
     @IBOutlet weak var passField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginCheck: UILabel!
     //login variable to check if user has logged in
     var login = false
+    //sets up default loginInfo
+    var loginInfo: Login = Login(account: Account(registered: false, key: "no key"), session: Session(id: "no id", expiration: "no expiration"))
     var signupPage: String = "https://auth.udacity.com/sign-up?next=https://classroom.udacity.com/authenticated"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +46,28 @@ class ViewController: UIViewController, UITextFieldDelegate {
             //print(String(data: newData!, encoding: .utf8)!)
             do {
                 let decoder = JSONDecoder()
-                let loginInfo = try decoder.decode(Login.self, from: newData!)
-                print(loginInfo)
+                self.loginInfo = try decoder.decode(Login.self, from: newData!)
+                print(self.loginInfo.account.key)
                 self.login=true
             } catch {
                 print(error)
             }
         }
         task.resume()
+    }
+    //gets a users FAKE session info
+    func getFakeID(id: String){
+    let request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/users/\(id)")!)
+    let session = URLSession.shared
+    let task = session.dataTask(with: request) { data, response, error in
+        if error != nil { // Handle error...
+            return
+        }
+        let range = (5..<data!.count)
+        let newData = data?.subdata(in: range) /* subset response data! */
+        print(String(data: newData!, encoding: .utf8)!)
+    }
+    task.resume()
     }
     //what happens when login button is pressed
     @IBAction func loginPressed(_ sender: Any) {
@@ -61,6 +76,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //checks if login was successful
         if(login){
         self.changeText(text: "Login Succeeded!")
+        getFakeID(id: self.loginInfo.account.key)
         //loads up map
         let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navVC") 
         present(vc, animated: true)
