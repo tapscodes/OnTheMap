@@ -8,17 +8,17 @@
 import UIKit
 import Foundation
 class ListViewController: UITableViewController {
-    var locs = studentLoc.getStudentResp()!.results
+    var locs : [StudentLocation] = [StudentLocation]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("CALLED")
         studentLoc.getStudentLocation()
+        locs = studentLoc.getStudentResp()!.results
         tableView.delegate = self
         tableView.dataSource = self
     }
-     func didSelectLocation(info: StudentLocation) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let app = UIApplication.shared
-        app.open(URL(string: info.realURL)!, options: [:], completionHandler: nil)
+        app.open(URL(string: self.locs[(indexPath as NSIndexPath).row].realURL)!, options: [:], completionHandler: nil)
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return 100
