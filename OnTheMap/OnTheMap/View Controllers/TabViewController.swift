@@ -9,20 +9,23 @@
 import Foundation
 import UIKit
 class TabViewController: UITabBarController{
+    //brings you to screen to add a new location
     @IBAction func newLoc(_ sender: Any) {
         let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newVC")
         present(vc, animated: true)
     }
+    //refreshes map+list
     @IBAction func refresh(_ sender: Any) {
         let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
         present(vc, animated: true)
     }
+    //logs user out
     @IBAction func logOut(_ sender: Any) {
         delSession()
         let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC")
         present(vc, animated: true)
     }
-    //logs user out
+    //deletes user session
     func delSession(){
         var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/session")!)
         request.httpMethod = "DELETE"

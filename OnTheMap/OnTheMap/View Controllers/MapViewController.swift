@@ -13,7 +13,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
             super.viewDidLoad()
-            mapView.delegate = self
             // The "locations" array is an array of dictionary objects that are similar to the JSON
             // data that you can download from parse.
              studentLoc.getStudentLocation()
@@ -45,12 +44,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 annotation.subtitle = mediaURL
                 
                 // Finally we place the annotation in an array of annotations.
-                self.mapView.removeAnnotations(self.mapView.annotations)
                 annotations.append(annotation)
             }
             }
             
-            // When the array is complete, we add the annotations to the map.
+            // When the array is complete, we add the annotations to the map after removing the old ones.
+            self.mapView.removeAnnotations(self.mapView.annotations)
             self.mapView.addAnnotations(annotations)
     }
 }
