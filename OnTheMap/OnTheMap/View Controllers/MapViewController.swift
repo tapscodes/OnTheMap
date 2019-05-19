@@ -26,10 +26,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // The map. See the setup in the Storyboard file. Note particularly that the view controller
     // is set up as the map view's delegate.
     @IBOutlet weak var mapView: MKMapView!
-    
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        activityView.startAnimating()
         studentLoc.getStudentLocation()
         let locations = studentLoc.getStudentResp()?.results
         
@@ -68,7 +68,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // When the array is complete, we add the annotations to the map after removing the current values
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapView.addAnnotations(annotations)
-        
+        activityView.stopAnimating()
     }
     
     // MARK: - MKMapViewDelegate
@@ -105,5 +105,4 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-    
 }

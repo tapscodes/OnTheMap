@@ -8,17 +8,20 @@
 //LOGIN/FAKE LOGIN INFO TO BE USED IN APP
 var loginInfo: Login = Login(account: Account(registered: false, key: "no key"), session: Session(id: "no id", expiration: "no expiration"))
 var fakeInfo: FakeInfo = FakeInfo(lastName: "No Last Name", firstName: "No First Name", key: "No Key")
+//bool to check if logged in
+var login = false
+
 import UIKit
 //LOGIN VIEW CONTROLLER
 class ViewController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet weak var userField: UITextField!
     @IBOutlet weak var passField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var loginCheck: UILabel!
-    //login variable to check if user has logged in
-    var login = false
+
     //sets up default loginInfo
     var signupPage: String = "https://auth.udacity.com/sign-up?next=https://classroom.udacity.com/authenticated"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //sets up text fields
@@ -27,71 +30,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     //changes text under login
     func changeText(text: String){
-        loginCheck.text = text
+        userField.text = text
+        passField.text = " "
     }
-    //tries to log user in with login info given by user
-    func sessionID(username: String, password: String){
-        var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/session")!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        // encoding a JSON body from a string, can also use a Codable struct
-        request.httpBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: .utf8)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error…
-                return
-            }
-            let range = (5..<data!.count)
-            let newData = data?.subdata(in: range) /* subset response data! */
-            //print(String(data: newData!, encoding: .utf8)!)
-            do {
-                let decoder = JSONDecoder()
-                loginInfo = try decoder.decode(Login.self, from: newData!)
-                //print(loginInfo.account.key)
-                self.login=true
-            } catch {
-                print(error)
-            }
-        }
-        task.resume()
-    }
-    //gets a users FAKE session info
-    func getFakeID(id: String){
-    let request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/users/\(id)")!)
-    let session = URLSession.shared
-    let task = session.dataTask(with: request) { data, response, error in
-        if error != nil { // Handle error...
-            return
-        }
-        let range = (5..<data!.count)
-        let newData = data?.subdata(in: range) /* subset response data! */
-        //print(String(data: newData!, encoding: .utf8)!)
-        do {
-            let decoder = JSONDecoder()
-            fakeInfo = try decoder.decode(FakeInfo.self, from: newData!)
-            print(fakeInfo)
-        } catch {
-            print(error)
-        }
-    }
-    task.resume()
-    }
+    
     //what happens when login button is pressed
     @IBAction func loginPressed(_ sender: Any) {
         //attempts to log in user
-        sessionID(username: userField.text!, password: passField.text!)
+        CentralData().sessionID(username: userField.text!, password: passField.text!)
         //checks if login was successful
         if(login){
-        self.changeText(text: "Login Succeeded!")
-        getFakeID(id: loginInfo.account.key)
+        CentralData().getFakeID(id: loginInfo.account.key)
         //loads up map
         let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navVC") 
-        present(vc, animated: true)
+            present(vc, animated: true)
         //resets login to false
-        login=false
+        login = false
         }//if login fails
-        else{
+            else{
         self.changeText(text: "Login Failed. Try Again.")
         }
     }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//Login Info
+//LOGIN INFO
 struct Login: Codable{
     let account: Account
     let session: Session
@@ -20,7 +20,11 @@ struct Account: Codable{
     let registered: Bool
     let key: String
 }
-//Student Location Info
+
+
+
+
+//STUDENT LOCATION INFO
 struct StudentResponse: Codable{
     var results: [StudentLocation]
 }
@@ -56,7 +60,12 @@ struct StudentLocation: Codable{
         return URL
     }
 }
-//Fake Student Info
+
+
+
+
+
+//FAKE STUDENT INFO
 struct FakeInfo: Decodable {
     let lastName: String?
     let firstName: String?
