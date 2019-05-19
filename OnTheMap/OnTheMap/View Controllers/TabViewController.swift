@@ -14,7 +14,8 @@ class TabViewController: UITabBarController{
         present(vc, animated: true)
     }
     @IBAction func refresh(_ sender: Any) {
-        print("WORKED")
+        let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
+        present(vc, animated: true)
     }
     @IBAction func logOut(_ sender: Any) {
         delSession()

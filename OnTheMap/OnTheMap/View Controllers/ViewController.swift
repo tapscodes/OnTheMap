@@ -5,7 +5,9 @@
 //  Created by Tristan Pudell-Spatscheck on 5/1/19.
 //  Copyright © 2019 TAPS. All rights reserved.
 //
-
+//LOGIN/FAKE LOGIN INFO TO BE USED IN APP
+var loginInfo: Login = Login(account: Account(registered: false, key: "no key"), session: Session(id: "no id", expiration: "no expiration"))
+var fakeInfo: FakeInfo = FakeInfo(lastName: "No Last Name", firstName: "No First Name", key: "No Key")
 import UIKit
 //LOGIN VIEW CONTROLLER
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -16,7 +18,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //login variable to check if user has logged in
     var login = false
     //sets up default loginInfo
-    var loginInfo: Login = Login(account: Account(registered: false, key: "no key"), session: Session(id: "no id", expiration: "no expiration"))
     var signupPage: String = "https://auth.udacity.com/sign-up?next=https://classroom.udacity.com/authenticated"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +47,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             //print(String(data: newData!, encoding: .utf8)!)
             do {
                 let decoder = JSONDecoder()
-                self.loginInfo = try decoder.decode(Login.self, from: newData!)
-                print(self.loginInfo.account.key)
+                loginInfo = try decoder.decode(Login.self, from: newData!)
+                //print(loginInfo.account.key)
                 self.login=true
             } catch {
                 print(error)
@@ -65,7 +66,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         let range = (5..<data!.count)
         let newData = data?.subdata(in: range) /* subset response data! */
-        print(String(data: newData!, encoding: .utf8)!)
+        //print(String(data: newData!, encoding: .utf8)!)
+        do {
+            let decoder = JSONDecoder()
+            fakeInfo = try decoder.decode(FakeInfo.self, from: newData!)
+            print(fakeInfo)
+        } catch {
+            print(error)
+        }
     }
     task.resume()
     }
@@ -76,7 +84,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //checks if login was successful
         if(login){
         self.changeText(text: "Login Succeeded!")
-        getFakeID(id: self.loginInfo.account.key)
+        getFakeID(id: loginInfo.account.key)
         //loads up map
         let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navVC") 
         present(vc, animated: true)

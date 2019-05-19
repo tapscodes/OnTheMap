@@ -14,12 +14,13 @@ class NewLocViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         //test cases
-        postStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851)
         //putStudentLocation(key: "1234", firstname: "John", lastname: "Doe", mapString: "Mountain View, CA", mediaURL: "https://udacity.com", latitude: 37.386052, longitude: -122.083851, objID: "8ZExGR5uX8")
     }
     //what to do when user hits find location
     @IBAction func findLocation(_ sender: Any) {
-
+        postStudentLocation(key: fakeInfo.key!, firstname: fakeInfo.firstName!, lastname: fakeInfo.lastName!, mapString: locationField.text!, mediaURL: websiteField.text!, latitude: 37.386052, longitude: -122.083851)
+        let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
+        present(vc, animated: true)
     }
     //posts student location info
     func postStudentLocation(key: String, firstname: String, lastname: String, mapString: String, mediaURL: String, latitude: Float, longitude: Float){

@@ -45,6 +45,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 annotation.subtitle = mediaURL
                 
                 // Finally we place the annotation in an array of annotations.
+                self.mapView.removeAnnotations(self.mapView.annotations)
                 annotations.append(annotation)
             }
             }
