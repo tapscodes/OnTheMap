@@ -26,10 +26,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // The map. See the setup in the Storyboard file. Note particularly that the view controller
     // is set up as the map view's delegate.
     @IBOutlet weak var mapView: MKMapView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        studentLoc.getStudentLocation()
+    let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    
+    
+    func loadingIsDone() {
         let locations = studentLoc.getStudentResp()?.results
+        
         
         
         // We will create an MKPointAnnotation for each dictionary in "locations". The
@@ -61,13 +63,34 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 // Finally we place the annotation in an array of annotations.
                 annotations.append(annotation)
             }
+            self.myActivityIndicator.stopAnimating()
         }
         
         // When the array is complete, we add the annotations to the map after removing the current values
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapView.addAnnotations(annotations)
+        
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Position Activity Indicator in the center of the main view
+        myActivityIndicator.center = self.view.center
+        
+        // If needed, you can prevent Acivity Indicator from hiding when stopAnimating() is called
+        myActivityIndicator.hidesWhenStopped = true
+        
+        // Start Activity Indicator
+        myActivityIndicator.startAnimating()
+        // Call stopAnimating() when need to stop activity indicator
+        //myActivityIndicator.stopAnimating()
+        
+        self.view.addSubview(myActivityIndicator)
+        
+        studentLoc.getStudentLocation(loadingIsDone: self.loadingIsDone)
+        
+    }
     // MARK: - MKMapViewDelegate
     
     // Here we create a view with a "right callout accessory view". You might choose to look into other

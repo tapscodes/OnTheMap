@@ -10,9 +10,17 @@ import Foundation
 class ListViewController: UITableViewController {
     var locs : [StudentLocation] = [StudentLocation]()
     
+    var loaddone : Bool = false
+    
+    func loadingIsDone() {
+        loaddone = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        studentLoc.getStudentLocation()
+        loaddone = false
+        studentLoc.getStudentLocation(loadingIsDone: loadingIsDone)
+        while (loaddone == true) { sleep(1)}
         locs = studentLoc.getStudentResp()!.results
         tableView.delegate = self
         tableView.dataSource = self
@@ -21,7 +29,7 @@ class ListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let app = UIApplication.shared
         if (self.locs[(indexPath as NSIndexPath).row].realURL != "No Valid URL") {
-        app.open(URL(string: self.locs[(indexPath as NSIndexPath).row].realURL)!, options: [:], completionHandler: nil)
+            app.open(URL(string: self.locs[(indexPath as NSIndexPath).row].realURL)!, options: [:], completionHandler: nil)
         }else{
             let alertLogin = CentralData().popupAlert(alertT: "Bad URL", alertMsg: "This website can't be opened", okText: "OK")
             self.present(alertLogin, animated: true, completion: nil)
@@ -29,9 +37,9 @@ class ListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 100
+        return 100
     }
-        
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocCell", for: indexPath) as! ListCell
         let info = self.locs[(indexPath as NSIndexPath).row]

@@ -14,7 +14,7 @@ class CentralData{
     var studentResp: StudentResponse?
     
     //gets student location info from parse
-    func getStudentLocation(){
+    func getStudentLocation(loadingIsDone:@escaping ()->()){
         var request = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?limit=100&order=-updatedAt")!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -29,12 +29,13 @@ class CentralData{
                 self.studentResp = try decoder.decode(StudentResponse?.self, from: data!)
                 //prints first name
                 //print(self.studentResp?.results[0].firstName)
+                DispatchQueue.main.async { loadingIsDone() }
             } catch {
                 print(error)
+                DispatchQueue.main.async { loadingIsDone() }
             }
         }
         task.resume()
-        waitForCompletion(task: task)
     }
     //gets student info for one student
     func getSpecificStudent(key: String){
