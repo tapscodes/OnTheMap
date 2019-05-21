@@ -319,15 +319,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dVc-yt-YvP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T2W-d2-osq">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vAR-wl-KW7">
-                                        <rect key="frame" x="0.0" y="226" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="117" width="375" height="50"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="AOq-Um-cBt"/>
                                             <constraint firstAttribute="height" constant="50" id="mz7-ef-Dpy"/>
                                         </constraints>
                                         <nil key="textColor"/>
@@ -335,8 +336,9 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wnn-rE-HYj">
-                                        <rect key="frame" x="0.0" y="292" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="183" width="375" height="50"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Et9-eS-XpV"/>
                                             <constraint firstAttribute="height" constant="50" id="K0o-yD-3cN"/>
                                         </constraints>
                                         <nil key="textColor"/>
@@ -344,10 +346,11 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9AF-op-A61">
-                                        <rect key="frame" x="0.0" y="358" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="249" width="375" height="50"/>
                                         <color key="backgroundColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="H5M-w3-v5y"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="S5w-Nd-ARS"/>
                                         </constraints>
                                         <state key="normal" title="Find Location">
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -358,7 +361,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bHd-pa-wya">
-                                        <rect key="frame" x="0.0" y="424" width="375" height="243"/>
+                                        <rect key="frame" x="0.0" y="315" width="375" height="308"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -375,16 +378,20 @@
                                     <constraint firstAttribute="trailing" secondItem="Wnn-rE-HYj" secondAttribute="trailing" id="O5z-r6-WGS"/>
                                     <constraint firstItem="bHd-pa-wya" firstAttribute="top" secondItem="9AF-op-A61" secondAttribute="bottom" id="PeX-WJ-7XJ"/>
                                     <constraint firstItem="T2W-d2-osq" firstAttribute="top" secondItem="dVc-yt-YvP" secondAttribute="top" id="RJM-YJ-8tp"/>
+                                    <constraint firstAttribute="trailing" secondItem="bHd-pa-wya" secondAttribute="trailing" id="VvR-z3-cxx"/>
                                     <constraint firstAttribute="bottom" secondItem="bHd-pa-wya" secondAttribute="bottom" id="ZbV-he-HMO"/>
                                     <constraint firstItem="bHd-pa-wya" firstAttribute="top" secondItem="9AF-op-A61" secondAttribute="bottom" id="a5M-Be-IoR"/>
                                     <constraint firstItem="9AF-op-A61" firstAttribute="top" secondItem="Wnn-rE-HYj" secondAttribute="bottom" id="dh2-Fg-7hZ"/>
                                     <constraint firstItem="T2W-d2-osq" firstAttribute="leading" secondItem="dVc-yt-YvP" secondAttribute="leading" id="etG-SW-bNY"/>
+                                    <constraint firstAttribute="bottom" secondItem="bHd-pa-wya" secondAttribute="bottom" id="h2p-Qi-Vl3"/>
                                     <constraint firstItem="T2W-d2-osq" firstAttribute="leading" secondItem="dVc-yt-YvP" secondAttribute="leading" id="h90-KD-jva"/>
                                     <constraint firstItem="bHd-pa-wya" firstAttribute="leading" secondItem="dVc-yt-YvP" secondAttribute="leading" id="lF9-h5-7vP"/>
                                     <constraint firstAttribute="trailing" secondItem="bHd-pa-wya" secondAttribute="trailing" id="lUc-uD-YkS"/>
+                                    <constraint firstItem="bHd-pa-wya" firstAttribute="leading" secondItem="dVc-yt-YvP" secondAttribute="leading" id="pb5-hW-UEz"/>
                                     <constraint firstAttribute="trailing" secondItem="9AF-op-A61" secondAttribute="trailing" id="sJZ-BY-D7X"/>
                                     <constraint firstAttribute="trailing" secondItem="T2W-d2-osq" secondAttribute="trailing" id="uyc-Bs-ua4"/>
                                     <constraint firstAttribute="bottom" secondItem="bHd-pa-wya" secondAttribute="bottom" id="xRG-tN-61k"/>
+                                    <constraint firstItem="bHd-pa-wya" firstAttribute="top" secondItem="9AF-op-A61" secondAttribute="bottom" id="yEe-WY-ar4"/>
                                     <constraint firstItem="vAR-wl-KW7" firstAttribute="leading" secondItem="dVc-yt-YvP" secondAttribute="leading" id="ybb-oQ-KbJ"/>
                                     <constraint firstItem="Wnn-rE-HYj" firstAttribute="top" secondItem="vAR-wl-KW7" secondAttribute="bottom" id="yq7-dt-2Wv"/>
                                 </constraints>
@@ -403,6 +410,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yzc-HJ-Pl6"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="locationField" destination="vAR-wl-KW7" id="XLE-IE-9e9"/>
                         <outlet property="websiteField" destination="Wnn-rE-HYj" id="7DT-y7-5S1"/>

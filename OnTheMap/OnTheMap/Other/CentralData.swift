@@ -171,4 +171,11 @@ class CentralData{
         while (task.state==URLSessionTask.State.running) { sleep(1) }
         activity.stopAnimating()
     }
+    //pops up an alert message
+    func popupAlert(alertT: String, alertMsg: String, okText: String) -> UIAlertController{
+        let alert = UIAlertController(title: alertT, message: alertMsg, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: okText, style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)}))
+        return alert
+    }
 }

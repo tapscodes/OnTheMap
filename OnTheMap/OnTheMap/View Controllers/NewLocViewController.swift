@@ -28,12 +28,12 @@ class NewLocViewController: UIViewController{
             CentralData().postStudentLocation(key: fakeInfo.key!, firstname: fakeInfo.firstName!, lastname: fakeInfo.lastName!, mapString: self.locationField.text!, mediaURL: self.websiteField.text!, latitude: Float(coordinates.latitude), longitude: Float(coordinates.longitude))
         } else {
             if error!.localizedDescription.contains("2") {
-                self.websiteField.text = "NO INTERNET CONNECTION"
-                self.locationField.text = "NO INTERNET CONNECTION"
+                let alertLogin = CentralData().popupAlert(alertT: "No Internet", alertMsg: "You seem to have poor internet connection", okText: "OK")
+                self.present(alertLogin, animated: true, completion: nil)
                 //"Check Internet Connectivity"
             } else {
-                self.websiteField.text = "LOCATION NOT FOUND"
-                self.locationField.text = "LOCATION NOT FOUND"
+                let alertLogin = CentralData().popupAlert(alertT: "Bad Location", alertMsg: "This location couldn't be found, please try another one", okText: "OK")
+                self.present(alertLogin, animated: true, completion: nil)
                 //"Location Not Found"
             }
             }
