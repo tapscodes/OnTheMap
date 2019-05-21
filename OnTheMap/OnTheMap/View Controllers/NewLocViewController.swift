@@ -40,8 +40,3 @@ class NewLocViewController: UIViewController{
         })
     }
 }
-/*
- CentralData().postStudentLocation(key: fakeInfo.key!, firstname: fakeInfo.firstName!, lastname: fakeInfo.lastName!, mapString: locationField.text!, mediaURL: websiteField.text!, latitude: 100, longitude: 100)
- let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
- present(vc, animated: true)
- */

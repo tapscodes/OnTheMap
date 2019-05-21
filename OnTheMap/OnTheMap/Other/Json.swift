@@ -53,7 +53,7 @@ struct StudentLocation: Codable{
         return name
     }
     var realURL: String{
-        var URL = "nowesbite.com"
+        var URL = "https://google.com"
         if(mediaURL != nil ){
             URL = mediaURL!
         }

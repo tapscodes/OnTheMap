@@ -29,11 +29,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         passField.delegate = self
     }
     //changes text under login
-    func changeText(text: String){
-        userField.text = text
-        passField.text = " "
+    func badLogin(){
+        let alert = UIAlertController(title: "Bad Login", message: "Please check your username and password", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "I understand", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)}))
+        self.present(alert, animated: true, completion: nil)
     }
-    
     //what happens when login button is pressed
     @IBAction func loginPressed(_ sender: Any) {
         //attempts to log in user
@@ -47,8 +48,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //resets login to false
         login = false
         }//if login fails
-            else{
-        self.changeText(text: "Login Failed. Try Again.")
+        else{
+        self.badLogin()
         }
     }
     //what happens when signup is pressed

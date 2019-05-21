@@ -5,7 +5,7 @@
 //  Created by Tristan Pudell-Spatscheck on 5/18/19.
 //  Copyright © 2019 TAPS. All rights reserved.
 //
-
+import UIKit
 import Foundation
 //model class for student location array
 var studentLoc: CentralData = CentralData()
@@ -34,7 +34,7 @@ class CentralData{
             }
         }
         task.resume()
-        while (task.state==URLSessionTask.State.running) { sleep(1) }
+        waitForCompletion(task: task)
     }
     //gets student info for one student
     func getSpecificStudent(){
@@ -102,7 +102,7 @@ class CentralData{
             }
         }
         task.resume()
-         while (task.state==URLSessionTask.State.running) { sleep(1) }
+        waitForCompletion(task: task)
     }
     //deletes user session
     func delSession(){
@@ -162,5 +162,13 @@ class CentralData{
             print(String(data: data!, encoding: .utf8)!)
         }
         task.resume()
+    }
+    //updates activity view and waits for function to complete
+    func waitForCompletion(task: URLSessionDataTask){
+        let activity = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        activity.hidesWhenStopped = false
+        activity.startAnimating()
+        while (task.state==URLSessionTask.State.running) { sleep(1) }
+        activity.stopAnimating()
     }
 }

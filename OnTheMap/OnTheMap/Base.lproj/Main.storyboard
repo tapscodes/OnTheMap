@@ -165,10 +165,6 @@
                                     <outlet property="delegate" destination="xLd-ew-nYT" id="6OT-y6-Wzg"/>
                                 </connections>
                             </mapView>
-                            <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rgO-Fz-MPT">
-                                <rect key="frame" x="177" y="323" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -181,7 +177,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="9C4-5y-QAq"/>
                     <connections>
-                        <outlet property="activityView" destination="rgO-Fz-MPT" id="q7H-qJ-DR4"/>
                         <outlet property="mapView" destination="5sm-Qw-NNK" id="fb8-4o-lou"/>
                     </connections>
                 </viewController>
