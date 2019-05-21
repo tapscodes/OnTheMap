@@ -20,7 +20,12 @@ class ListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let app = UIApplication.shared
+        if (self.locs[(indexPath as NSIndexPath).row].realURL != "No Valid URL") {
         app.open(URL(string: self.locs[(indexPath as NSIndexPath).row].realURL)!, options: [:], completionHandler: nil)
+        }else{
+            let alertLogin = CentralData().popupAlert(alertT: "Bad URL", alertMsg: "This website can't be opened", okText: "OK")
+            self.present(alertLogin, animated: true, completion: nil)
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

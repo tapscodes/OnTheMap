@@ -51,6 +51,7 @@ class CentralData{
             print(String(data: data!, encoding: .utf8)!)
         }
         task.resume()
+        waitForCompletion(task: task)
     }
     func getStudentResp() -> StudentResponse?{
         return studentResp
@@ -75,6 +76,7 @@ class CentralData{
             }
         }
         task.resume()
+        waitForCompletion(task: task)
     }
     //tries to log user in with login info given by user and sets "login" to true
     func sessionID(username: String, password: String){
@@ -126,6 +128,7 @@ class CentralData{
             print(String(data: newData!, encoding: .utf8)!)
         }
         task.resume()
+        waitForCompletion(task: task)
     }
     //posts student location info
     func postStudentLocation(key: String, firstname: String, lastname: String, mapString: String, mediaURL: String, latitude: Float, longitude: Float){
@@ -143,6 +146,7 @@ class CentralData{
             print(String(data: data!, encoding: .utf8)!)
         }
         task.resume()
+        waitForCompletion(task: task)
     }
     //puts student location info
     func putStudentLocation(key: String, firstname: String, lastname: String, mapString: String, mediaURL: String, latitude: Float, longitude: Float, objID: String){
@@ -162,6 +166,7 @@ class CentralData{
             print(String(data: data!, encoding: .utf8)!)
         }
         task.resume()
+        waitForCompletion(task: task)
     }
     //updates activity view and waits for function to complete
     func waitForCompletion(task: URLSessionDataTask){

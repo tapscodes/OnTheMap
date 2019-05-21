@@ -24,7 +24,7 @@ class NewLocViewController: UIViewController{
         let address = locationField.text!
         geoCoder.geocodeAddressString(address, completionHandler: {(placemarks,error) in
         if let placemark = placemarks?.first {
-        var coordinates = placemark.location!.coordinate
+        let coordinates = placemark.location!.coordinate
             CentralData().postStudentLocation(key: fakeInfo.key!, firstname: fakeInfo.firstName!, lastname: fakeInfo.lastName!, mapString: self.locationField.text!, mediaURL: self.websiteField.text!, latitude: Float(coordinates.latitude), longitude: Float(coordinates.longitude))
         } else {
             if error!.localizedDescription.contains("2") {
