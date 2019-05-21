@@ -37,8 +37,8 @@ class CentralData{
         waitForCompletion(task: task)
     }
     //gets student info for one student
-    func getSpecificStudent(){
-        let urlString = "https://parse.udacity.com/parse/classes/StudentLocation"
+    func getSpecificStudent(key: String){
+        let urlString = "https://parse.udacity.com/parse/classes/StudentLocation?uniqueKey=\(key)"
         let url = URL(string: urlString)
         var request = URLRequest(url: url!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
