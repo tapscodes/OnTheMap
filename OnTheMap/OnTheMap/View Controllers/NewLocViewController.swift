@@ -42,7 +42,6 @@ class NewLocViewController: UIViewController{
         })
     }
     @IBAction func cancelPressed(_ sender: Any) {
-        let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
-        self.present(vc, animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 }

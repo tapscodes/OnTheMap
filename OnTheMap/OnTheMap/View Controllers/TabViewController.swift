@@ -22,6 +22,7 @@ class TabViewController: UITabBarController{
     //logs user out
     @IBAction func logOut(_ sender: Any) {
         CentralData().delSession()
+        self.dismiss(animated: true, completion: nil)
         let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC")
         present(vc, animated: true)
     }
