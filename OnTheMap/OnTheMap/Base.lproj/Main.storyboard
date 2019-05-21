@@ -75,14 +75,8 @@
                                             <action selector="signUpPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hji-xH-hxO"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning: You might have to hit login twice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNg-9A-Q4O">
-                                        <rect key="frame" x="0.0" y="405" width="375" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qnd-Tr-qWM">
-                                        <rect key="frame" x="0.0" y="433.5" width="375" height="169.5"/>
+                                        <rect key="frame" x="0.0" y="405" width="375" height="198"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -104,11 +98,9 @@
                                     <constraint firstAttribute="trailing" secondItem="ob9-Vn-K3S" secondAttribute="trailing" id="YtB-Vr-6n8"/>
                                     <constraint firstAttribute="trailing" secondItem="PuB-Vu-ElQ" secondAttribute="trailing" id="bXE-bh-VUN"/>
                                     <constraint firstItem="9uk-Ce-wU1" firstAttribute="top" secondItem="ob9-Vn-K3S" secondAttribute="bottom" id="dDt-Qm-nZ9"/>
-                                    <constraint firstItem="oNg-9A-Q4O" firstAttribute="top" secondItem="T8t-1c-Eg6" secondAttribute="bottom" id="gEc-2g-Tqh"/>
                                     <constraint firstItem="Qnd-Tr-qWM" firstAttribute="leading" secondItem="x6x-p0-23h" secondAttribute="leading" id="hOU-Xd-Sxw"/>
                                     <constraint firstItem="T8t-1c-Eg6" firstAttribute="leading" secondItem="x6x-p0-23h" secondAttribute="leading" id="hWT-A1-UpV"/>
                                     <constraint firstItem="Sza-UQ-GjV" firstAttribute="top" secondItem="PuB-Vu-ElQ" secondAttribute="bottom" id="kUC-4y-klO"/>
-                                    <constraint firstItem="Qnd-Tr-qWM" firstAttribute="top" secondItem="oNg-9A-Q4O" secondAttribute="bottom" id="lcP-6k-Xsj"/>
                                     <constraint firstItem="Sza-UQ-GjV" firstAttribute="leading" secondItem="x6x-p0-23h" secondAttribute="leading" id="mv1-MW-016"/>
                                     <constraint firstAttribute="trailing" secondItem="Qnd-Tr-qWM" secondAttribute="trailing" id="x64-lc-H4m"/>
                                 </constraints>

@@ -16,8 +16,7 @@ class TabViewController: UITabBarController{
     }
     //refreshes map+list
     @IBAction func refresh(_ sender: Any) {
-        let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
-        present(vc, animated: true)
+        refreshData.refresh()
     }
     //logs user out
     @IBAction func logOut(_ sender: Any) {

@@ -9,21 +9,42 @@ import UIKit
 import Foundation
 class ListViewController: UITableViewController {
     var locs : [StudentLocation] = [StudentLocation]()
-    
     var loaddone : Bool = false
+    let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    
     
     func loadingIsDone() {
         loaddone = true
+        locs = studentLoc.getStudentResp()!.results
+        self.tableView.reloadData()
+        self.myActivityIndicator.stopAnimating()
     }
     
     override func viewDidLoad() {
+        refreshData.DataDone=self.loadingIsDone
+        refreshData.ActivityIndicator=myActivityIndicator
         super.viewDidLoad()
         loaddone = false
+        // Position Activity Indicator in the center of the main view
+        myActivityIndicator.center = self.view.center
+        
+        // If needed, you can prevent Acivity Indicator from hiding when stopAnimating() is called
+        myActivityIndicator.hidesWhenStopped = true
+        
+        // Start Activity Indicator
+        myActivityIndicator.startAnimating()
+        
+        
+        self.view.addSubview(myActivityIndicator)
         studentLoc.getStudentLocation(loadingIsDone: loadingIsDone)
-        while (loaddone == true) { sleep(1)}
-        locs = studentLoc.getStudentResp()!.results
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated:Bool) {
+        super.viewDidAppear(animated)
+        refreshData.DataDone=self.loadingIsDone
+        refreshData.ActivityIndicator=myActivityIndicator
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -37,7 +58,11 @@ class ListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        if (loaddone) {
+            return 100
+        } else {
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
