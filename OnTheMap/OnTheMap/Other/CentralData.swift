@@ -102,6 +102,7 @@ class CentralData{
             }
         }
         task.resume()
+         while (task.state==URLSessionTask.State.running) { sleep(1) }
     }
     //deletes user session
     func delSession(){
